@@ -1,15 +1,15 @@
 {
-  "name": "@open-rpc/playground",
+  "name": "as2network-rpc-playground",
   "version": "0.0.0-development",
-  "homepage": "https://playground.open-rpc.org/",
+  "homepage": "https://as2.network/rpc",
   "repository": {
     "type": "git",
-    "url": "https://github.com/open-rpc/playground.git"
+    "url": "https://github.com/as2network/playground.git"
   },
   "bin": {
     "open-rpc-playground": "./bin/cli.js"
   },
-  "bugs": "https://github.com/open-rpc/playground/issues",
+  "bugs": "https://github.com/as2network/playground/issues",
   "license": "Apache-2.0",
   "dependencies": {
     "@etclabscore/monaco-add-json-schema-diagnostics": "^1.0.3",
