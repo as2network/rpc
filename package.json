@@ -1,6 +1,6 @@
 {
   "name": "as2network-rpc-playground",
-  "version": "0.0.0-development.0",
+  "version": "0.0.0",
   "homepage": "https://as2.network/rpc",
   "repository": {
     "type": "git",
