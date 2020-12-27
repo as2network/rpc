@@ -8,7 +8,7 @@ import {
 import React, { Component } from "react";
 import classNames from "classnames";
 import { IUISchema } from "../UISchema";
-import {isEmpty} from "lodash";
+import { isEmpty } from "lodash";
 import IconButton from "@material-ui/core/IconButton";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import CloseIcon from "@material-ui/icons/Close";
@@ -71,14 +71,13 @@ const styleSnackBarContent = (theme: Theme) => ({
   margin: {
     margin: theme.spacing(2),
   },
-
 });
 
 export enum NotificationType {
   error = "error",
   warn = "warning",
   info = "info",
-  success= "success",
+  success = "success",
   debug = "debug",
 }
 
@@ -88,12 +87,13 @@ interface IProps extends WithStyles<typeof styleSnackBar> {
   close: any;
 }
 
-interface ISnackBarContentProps extends WithStyles<typeof styleSnackBarContent> {
- uiSchema?: IUISchema;
- onClose: any;
- variant: NotificationType;
- className: string;
- message: JSX.Element;
+interface ISnackBarContentProps
+  extends WithStyles<typeof styleSnackBarContent> {
+  uiSchema?: IUISchema;
+  onClose: any;
+  variant: NotificationType;
+  className: string;
+  message: JSX.Element;
 }
 
 export interface ISnackBarNotification {
@@ -103,7 +103,14 @@ export interface ISnackBarNotification {
 
 class SnackBarCntWrapper extends React.Component<ISnackBarContentProps> {
   public render() {
-    const { classes, className, message, onClose, variant, ...other } = this.props;
+    const {
+      classes,
+      className,
+      message,
+      onClose,
+      variant,
+      ...other
+    } = this.props;
     const Icon = variantIcon[variant];
     return (
       <SnackbarContent
@@ -131,27 +138,31 @@ class SnackBarCntWrapper extends React.Component<ISnackBarContentProps> {
     );
   }
 }
-const SnackBarContentWrapper = withStyles(styleSnackBarContent)(SnackBarCntWrapper);
+const SnackBarContentWrapper = withStyles(styleSnackBarContent)(
+  SnackBarCntWrapper
+);
 
 class SnackBarWrapper extends Component<IProps> {
-
   public render() {
     const { classes, notification, close } = this.props;
-    if (isEmpty(notification)) { return null; }
+    if (isEmpty(notification)) {
+      return null;
+    }
     return (
       <Snackbar
-      open
-      autoHideDuration={10000}
-      anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "left",
-      }}>
-      <SnackBarContentWrapper
-      onClose={close}
-      variant={notification.type}
-      message={<span>{notification.message}</span>}
-      className={classes.margin}
-      />
+        open
+        autoHideDuration={10000}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+      >
+        <SnackBarContentWrapper
+          onClose={close}
+          variant={notification.type}
+          message={<span>{notification.message}</span>}
+          className={classes.margin}
+        />
       </Snackbar>
     );
   }

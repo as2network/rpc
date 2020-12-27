@@ -32,27 +32,40 @@ const PlaygroundSplitPane: React.FC<IProps> = (props) => {
 
   const dir = props.direction || "vertical";
   const defaultSize = !props.split
-    ? dir === "horizontal" ? window.innerHeight : window.innerWidth
-    : dir === "horizontal" ? window.innerHeight * .35 : window.innerWidth / 2;
+    ? dir === "horizontal"
+      ? window.innerHeight
+      : window.innerWidth
+    : dir === "horizontal"
+    ? window.innerHeight * 0.35
+    : window.innerWidth / 2;
   return (
-    <SplitPane split={dir}
+    <SplitPane
+      split={dir}
       style={props.style}
       className={"playground-splitview"}
       minSize={100}
       maxSize={0}
       defaultSize={defaultSize}
       size={defaultSize}
-      onChange={handleChange}>
-      <div style={
-        props.leftStyle ? { ...props.leftStyle, ...{ display: "flex", flexDirection: "column", height: "100%" } }
-          : { display: "flex", flexDirection: "column", height: "100%" }
-      } key={1}>
+      onChange={handleChange}
+    >
+      <div
+        style={
+          props.leftStyle
+            ? {
+                ...props.leftStyle,
+                ...{ display: "flex", flexDirection: "column", height: "100%" },
+              }
+            : { display: "flex", flexDirection: "column", height: "100%" }
+        }
+        key={1}
+      >
         {props.left}
       </div>
       <div key={2} style={props.rightStyle}>
         {props.right}
       </div>
-    </SplitPane >
+    </SplitPane>
   );
 };
 

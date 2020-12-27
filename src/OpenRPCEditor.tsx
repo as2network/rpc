@@ -46,14 +46,16 @@ const OpenRPCEditor: React.FC<IProps> = (props) => {
     if (!props.onMarkerChange) {
       return;
     }
-    editor.onDidChangeModelDecorations(_.debounce(() => {
-      if (props.onMarkerChange) {
-        const mk = monaco.editor.getModelMarkers({
-          resource: modelUri,
-        });
-        props.onMarkerChange(mk);
-      }
-    }, 300));
+    editor.onDidChangeModelDecorations(
+      _.debounce(() => {
+        if (props.onMarkerChange) {
+          const mk = monaco.editor.getModelMarkers({
+            resource: modelUri,
+          });
+          props.onMarkerChange(mk);
+        }
+      }, 300)
+    );
   }
 
   const handleChange = (ev: any, value: any) => {

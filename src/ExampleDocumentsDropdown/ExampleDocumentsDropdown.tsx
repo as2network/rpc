@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Menu, MenuItem, Tooltip, Button, Grid, Typography } from "@material-ui/core";
+import {
+  Menu,
+  MenuItem,
+  Tooltip,
+  Button,
+  Grid,
+  Typography,
+} from "@material-ui/core";
 import DropdownIcon from "@material-ui/icons/ArrowDropDown";
 
 export interface IExample {
@@ -42,7 +49,9 @@ const ExampleDocumentsDropdown: React.FC<IProps> = ({ examples, onChange }) => {
           variant="outlined"
           endIcon={<DropdownIcon />}
           style={{ height: "38px", fontSize: "11px", marginLeft: "10px" }}
-        >examples</Button>
+        >
+          examples
+        </Button>
       </Tooltip>
       <Menu
         id="simple-menu"
@@ -59,13 +68,14 @@ const ExampleDocumentsDropdown: React.FC<IProps> = ({ examples, onChange }) => {
                   <Typography variant="subtitle1">{example.name}</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography variant="caption" style={{ fontSize: "9px" }}>{example.url}</Typography>
+                  <Typography variant="caption" style={{ fontSize: "9px" }}>
+                    {example.url}
+                  </Typography>
                 </Grid>
               </Grid>
             </MenuItem>
           ))}
         </div>
-
       </Menu>
     </>
   );

@@ -9,9 +9,11 @@ export default createStore(() => {
   const defaultUISchema = {
     appBar: {
       "ui:input": true,
-      "ui:inputPlaceholder": "Enter OpenRPC Document Url or rpc.discover Endpoint",
+      "ui:inputPlaceholder":
+        "Enter OpenRPC Document Url or rpc.discover Endpoint",
       /* tslint:disable */
-      "ui:logoUrl": "https://github.com/open-rpc/design/raw/master/icons/open-rpc-logo-noText/open-rpc-logo-noText%20(PNG)/128x128.png",
+      "ui:logoUrl":
+        "https://github.com/open-rpc/design/raw/master/icons/open-rpc-logo-noText/open-rpc-logo-noText%20(PNG)/128x128.png",
       /* tslint:enable */
       "ui:splitView": true,
       "ui:darkMode": false,

@@ -7,5 +7,6 @@ import { ReusableProvider } from "reusable";
 ReactDOM.render(
   <ReusableProvider>
     <App />
-  </ReusableProvider>
-, document.getElementById("root"));
+  </ReusableProvider>,
+  document.getElementById("root")
+);

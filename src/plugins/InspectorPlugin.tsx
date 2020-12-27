@@ -18,29 +18,39 @@ const InspectorPlugin: React.FC<IMethodPluginProps> = (props) => {
   if (method && method.examples && method.examples[examplePosition]) {
     example = method.examples[examplePosition] as ExamplePairingObject;
     const paramStructure: TParamStructure = method.paramStructure || "either";
-    exampleParams = paramStructure === "by-name"
-      ? (example.params as ExampleObject[]).reduce(((memo, p) => {
-        memo[p.name] = p.value;
-        return memo;
-      }), {} as any)
-      : (example.params as ExampleObject[]).map(((p) => p.value));
+    exampleParams =
+      paramStructure === "by-name"
+        ? (example.params as ExampleObject[]).reduce((memo, p) => {
+            memo[p.name] = p.value;
+            return memo;
+          }, {} as any)
+        : (example.params as ExampleObject[]).map((p) => p.value);
   }
   if (method && method.paramStructure === "by-name") {
     emptyParams = {};
   }
   return (
     <Tooltip title="Open in Inspector">
-      <Button variant="contained" onClick={() => setInspectorContents({
-        url: searchUrl,
-        openrpcMethodObject: props.openrpcMethodObject,
-        request: {
-          jsonrpc: "2.0",
-          method: method.name,
-          params: exampleParams || emptyParams,
-          id: 0,
-        },
-      })}><span role="img" aria-label="try-it-inspector">🕵️‍♂️</span>️️ Try It Now</Button>
-
+      <Button
+        variant="contained"
+        onClick={() =>
+          setInspectorContents({
+            url: searchUrl,
+            openrpcMethodObject: props.openrpcMethodObject,
+            request: {
+              jsonrpc: "2.0",
+              method: method.name,
+              params: exampleParams || emptyParams,
+              id: 0,
+            },
+          })
+        }
+      >
+        <span role="img" aria-label="try-it-inspector">
+          🕵️‍♂️
+        </span>
+        ️️ Try It Now
+      </Button>
     </Tooltip>
   );
 };

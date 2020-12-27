@@ -8,13 +8,18 @@ const useMonacoVimMode = (editor: monaco.editor.IStandaloneCodeEditor) => {
   const [vimMode, setVimMode] = useState();
 
   useEffect(() => {
-    if (!editor) { return; }
+    if (!editor) {
+      return;
+    }
 
     editor.addAction({
       id: "vim-mode",
       label: "Vim Mode",
       keybindings: [
-        monaco.KeyMod.chord(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_K, monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_V), //tslint:disable-line
+        monaco.KeyMod.chord(
+          monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_K,
+          monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_V
+        ), //tslint:disable-line
       ],
       contextMenuGroupId: "navigation",
       contextMenuOrder: 1.5,
@@ -31,7 +36,7 @@ const useMonacoVimMode = (editor: monaco.editor.IStandaloneCodeEditor) => {
         vimMode.dispose();
       }
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor]);
 
   return [editor, vimMode];

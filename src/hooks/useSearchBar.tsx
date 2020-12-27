@@ -8,7 +8,9 @@ interface ISearchBarResponse {
   error: string | undefined;
 }
 
-const useSearchBar = (defaultValue: string | undefined): [string | undefined, ISearchBarResponse, Dispatch<any>] => {
+const useSearchBar = (
+  defaultValue: string | undefined
+): [string | undefined, ISearchBarResponse, Dispatch<any>] => {
   const [searchUrl, setSearchUrl] = useState<string | undefined>(defaultValue);
   const [results, setResults] = useState();
   const [error, setError] = useState();

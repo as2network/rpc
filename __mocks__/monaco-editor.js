@@ -1,24 +1,20 @@
 class Selection {
   //
-};
+}
 
 const monaco = {
-  addAction() {
-
-  },
+  addAction() {},
   getModels() {
-    return []
+    return [];
   },
   Uri: {
     parse(f) {
       return f;
-    }
+    },
   },
   KeyCode: {},
   KeyMod: {
-    chord() {
-
-    }
+    chord() {},
   },
   get editor() {
     return this;
@@ -26,38 +22,27 @@ const monaco = {
   languages: {
     json: {
       jsonDefaults: {
-        setDiagnosticsOptions() {
-        }
-      }
-    }
+        setDiagnosticsOptions() {},
+      },
+    },
   },
-  setSelection() {
-
-  },
-  focus() {
-
-  },
+  setSelection() {},
+  focus() {},
   Selection,
-  onDidChangeModelContent() {
-
-  },
-  setModel() {
-
-  },
+  onDidChangeModelContent() {},
+  setModel() {},
   createModel() {
     return {
-      updateOptions() {
-
-      }
-    }
+      updateOptions() {},
+    };
   },
   create() {
     return this;
   },
   dispose() {},
   getModelMarkers() {
-    return []
-  }
+    return [];
+  },
 };
 
 module.exports = monaco;

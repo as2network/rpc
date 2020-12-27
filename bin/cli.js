@@ -26,7 +26,7 @@ program
     "--open [open]",
     "Open the resulting playground in your default browser"
   )
-  .action(async clientName => {
+  .action(async (clientName) => {
     const schema = await parse(program.schema);
     let uiSchema = {};
     if (program.uiSchema) {
@@ -44,7 +44,10 @@ program
     const port = program.port || 3000;
     // Listen
     server.listen(port);
-    const url = `http://localhost:${port}?${qs.stringify({ uiSchema, schema })}`;
+    const url = `http://localhost:${port}?${qs.stringify({
+      uiSchema,
+      schema,
+    })}`;
     console.log(`Server listening on port: ${port}`);
     if (program.open) {
       open(url);

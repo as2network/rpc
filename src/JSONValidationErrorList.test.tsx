@@ -5,7 +5,7 @@ import * as monaco from "monaco-editor";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<JSONValidationErrorList markers={[]}/>, div);
+  ReactDOM.render(<JSONValidationErrorList markers={[]} />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
 

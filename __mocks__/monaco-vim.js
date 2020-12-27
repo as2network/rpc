@@ -2,6 +2,6 @@ const MonacoVimMock = {
   initVimMode() {
     return this;
   },
-  dispose()  {}
+  dispose() {},
 };
 export default MonacoVimMock;

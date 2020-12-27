@@ -5,12 +5,24 @@ import { Documentation } from "@open-rpc/docs-react";
 import "./App.css";
 import AppBar from "./AppBar/AppBar";
 import { IUISchema } from "./UISchema";
-import { SnackBar, ISnackBarNotification, NotificationType } from "./SnackBar/SnackBar";
+import {
+  SnackBar,
+  ISnackBarNotification,
+  NotificationType,
+} from "./SnackBar/SnackBar";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import { lightTheme, darkTheme } from "./themes/openrpcTheme";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import ExpandLess from "@material-ui/icons/ExpandLess";
-import { CssBaseline, Container, Tab, Typography, IconButton, Tooltip, Tabs } from "@material-ui/core";
+import {
+  CssBaseline,
+  Container,
+  Tab,
+  Typography,
+  IconButton,
+  Tooltip,
+  Tabs,
+} from "@material-ui/core";
 import PlaygroundSplitPane from "./PlaygroundSplitPane";
 import useParsedSchema from "./hooks/useParsedSchema";
 import useDefaultEditorValue from "./hooks/useDefaultEditorValue";
@@ -27,14 +39,18 @@ import useInspectorActionStore from "./stores/inspectorActionStore";
 
 const App: React.FC = () => {
   const [defaultValue] = useDefaultEditorValue();
-  const [markers, setMarkers] = useState<monaco.editor.IMarker[]>([] as monaco.editor.IMarker[]);
+  const [markers, setMarkers] = useState<monaco.editor.IMarker[]>(
+    [] as monaco.editor.IMarker[]
+  );
   const [searchUrl, { results, error }, setSearchUrl] = searchBarStore();
-  const [notification, setNotification] = useState<ISnackBarNotification | undefined>();
+  const [notification, setNotification] = useState<
+    ISnackBarNotification | undefined
+  >();
   const [UISchema, setUISchemaBySection]: [IUISchema, any] = UISchemaStore();
   const [editor, setEditor]: [any, Dispatch<{}>] = useState();
   const [horizontalSplit, privateSetHorizontalSplit] = useState(false);
   const [parsedSchema, setParsedSchema] = useParsedSchema(
-    defaultValue ? JSON.parse(defaultValue) : null,
+    defaultValue ? JSON.parse(defaultValue) : null
   );
   const setHorizontalSplit = (val: boolean) => {
     if (editor) {
@@ -68,7 +84,9 @@ const App: React.FC = () => {
   useEffect(() => {
     setReactJsonOptions({
       ...reactJsonOptions,
-      theme: UISchema.appBar["ui:darkMode"] ? "summerfruit" : "summerfruit:inverted",
+      theme: UISchema.appBar["ui:darkMode"]
+        ? "summerfruit"
+        : "summerfruit:inverted",
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [UISchema.appBar["ui:darkMode"]]);
@@ -118,7 +136,9 @@ const App: React.FC = () => {
         searchBarUrl={searchUrl}
         uiSchema={UISchema}
         examples={examples as IExample[]}
-        onExampleDocumentsDropdownChange={(example: IExample) => setSearchUrl(example.url)}
+        onExampleDocumentsDropdownChange={(example: IExample) =>
+          setSearchUrl(example.url)
+        }
         onSplitViewChange={(value) => {
           setUISchemaBySection({
             value,
@@ -146,9 +166,9 @@ const App: React.FC = () => {
         }}
         right={
           <>
-            <Inspector hideToggleTheme={true} url={
-              searchUrl && searchUrl.includes(".json") ? null : searchUrl
-            }
+            <Inspector
+              hideToggleTheme={true}
+              url={searchUrl && searchUrl.includes(".json") ? null : searchUrl}
               request={inspectorContents && inspectorContents.request}
               openrpcDocument={parsedSchema}
             />
@@ -205,7 +225,13 @@ const App: React.FC = () => {
                   variant="scrollable"
                   indicatorColor="primary"
                   value={0}
-                  style={{ position: "absolute", bottom: "0", right: "25px", zIndex: 1, marginBottom: "0px" }}
+                  style={{
+                    position: "absolute",
+                    bottom: "0",
+                    right: "25px",
+                    zIndex: 1,
+                    marginBottom: "0px",
+                  }}
                 >
                   <Tab
                     onClick={() => setHorizontalSplit(!horizontalSplit)}
@@ -217,29 +243,37 @@ const App: React.FC = () => {
                     }}
                     label={
                       <div>
-                        <Typography
-                          variant="body1"><span role="img" aria-label="inspector">🕵️‍♂️</span>️ Inspector</Typography>
+                        <Typography variant="body1">
+                          <span role="img" aria-label="inspector">
+                            🕵️‍♂️
+                          </span>
+                          ️ Inspector
+                        </Typography>
                         <Tooltip title="Toggle Inspector">
-                          <IconButton style={{ position: "absolute", right: "5px", top: "20%" }} size="small">
-                            {horizontalSplit
-                              ? <ExpandMore />
-                              : <ExpandLess />
-                            }
+                          <IconButton
+                            style={{
+                              position: "absolute",
+                              right: "5px",
+                              top: "20%",
+                            }}
+                            size="small"
+                          >
+                            {horizontalSplit ? <ExpandMore /> : <ExpandLess />}
                           </IconButton>
                         </Tooltip>
                       </div>
-                    }>
-                  </Tab>
+                    }
+                  ></Tab>
                 </Tabs>
               </>
             }
           />
-
         }
       />
       <SnackBar
         close={() => setNotification({} as ISnackBarNotification)}
-        notification={notification as ISnackBarNotification} />
+        notification={notification as ISnackBarNotification}
+      />
     </MuiThemeProvider>
   );
 };

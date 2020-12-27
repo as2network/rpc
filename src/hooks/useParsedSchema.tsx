@@ -3,8 +3,13 @@ import _ from "lodash";
 import refParser from "json-schema-ref-parser";
 import { OpenrpcDocument } from "@open-rpc/meta-schema";
 
-const useParsedSchema = (defaultValue: object | any): [OpenrpcDocument | undefined, Dispatch<string>] => {
-  const [parsedSchema, setParsedSchema]: [OpenrpcDocument | undefined, Dispatch<OpenrpcDocument>] = useState();
+const useParsedSchema = (
+  defaultValue: object | any
+): [OpenrpcDocument | undefined, Dispatch<string>] => {
+  const [parsedSchema, setParsedSchema]: [
+    OpenrpcDocument | undefined,
+    Dispatch<OpenrpcDocument>
+  ] = useState();
   const validateAndSetSchema = (schema: string) => {
     let maybeSchema;
     try {
@@ -25,7 +30,7 @@ const useParsedSchema = (defaultValue: object | any): [OpenrpcDocument | undefin
     if (defaultValue) {
       validateAndSetSchema(defaultValue);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return [parsedSchema, validateAndSetSchema];
 };
